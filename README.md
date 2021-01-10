@@ -2,7 +2,9 @@
 https://upcloud.com/community/tutorials/install-matrix-synapse/
 
 Install packages
-`sudo apt-get install build-essential python3-dev libffi-dev python-pip python-setuptools sqlite3 libssl-dev python-virtualenv libjpeg-dev libxslt1-dev`
+```
+sudo apt-get install build-essential python3-dev libffi-dev python-pip python-setuptools sqlite3 libssl-dev python-virtualenv libjpeg-dev libxslt1-dev
+```
 
 Installing Synapse home server
 ```
@@ -12,7 +14,9 @@ source ~/synapse/env/bin/activate
 ```
 
 Check that the following packages are installed and up to date.
-`pip install --upgrade pip virtualenv six packaging appdirs`
+```
+pip install --upgrade pip virtualenv six packaging appdirs
+```
 
 Then use pip to install and upgrade the setup tools as well as the Synapse server itself.
 ```
@@ -34,10 +38,14 @@ python -m synapse.app.homeserver \
   --report-stats=yes|no
   ```
   
-`A config file has been generated in 'homeserver.yaml' for server name 'matrix.example.com'. Please review this file and customise it to your needs.`
+```
+A config file has been generated in 'homeserver.yaml' for server name 'matrix.example.com'. Please review this file and customise it to your needs.
+```
 
 You’ll also need to have a webserver available for Certbot to use for validating the certificate. Install nginx using the instructions below according to your operating system.
-`sudo apt-get install nginx`
+```
+sudo apt-get install nginx
+```
 
 Create cert using LetsEncrypt
  ```
@@ -53,10 +61,14 @@ crontab -e
 Matrix recommends setting up a reverse proxy, such as nginx, Apache or HAProxy, in front of your Synapse server. This is intended to simplify client connections by allowing Matrix to use the common HTTPS port 443 while keeping the server-to-server connections at the port 8448.
 
 Change the default home server configuration to only listen to the localhost address for the port 8008. Open the homeserver.yaml file for edit.
-`vi ~/synapse/homeserver.yaml`
+```
+vi ~/synapse/homeserver.yaml
+```
 
 Next, enable nginx to act as the reverse proxy by creating a configuration file for the proxy functionality.
-`vi /etc/nginx/conf.d/matrix.conf`
+```
+vi /etc/nginx/conf.d/matrix.conf
+```
 
 Then enter the following to enable the proxy with SSL termination. Replace the matrix.example.com with your domain in the server name. The certificates issued by Let’s Encrypt are saved under the directory indicated in the Certbot output, usually under /etc/letsencrypt/live/. Again, replace the matrix.example.com with the domain name the certificates were issued for.
 ```
@@ -111,7 +123,9 @@ synctl start
 ```
 
 Then register a new user to the localhost.
-`register_new_matrix_user -c homeserver.yaml http://localhost:8008`
+```
+register_new_matrix_user -c homeserver.yaml http://localhost:8008
+```
 
 This starts an interactive user configuration, enter the desired username and password, then select yes to enable administration priveledges.
 ```
