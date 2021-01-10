@@ -52,6 +52,11 @@ You’ll also need to have a webserver available for Certbot to use for validati
 sudo apt-get install nginx
 ```
 
+Start nginx
+```
+service nginx start
+```
+
 Create cert using LetsEncrypt
 https://certbot.eff.org/lets-encrypt/pip-nginx
 ```
@@ -107,6 +112,11 @@ server {
         proxy_set_header X-Forwarded-For $remote_addr;
     }
 }
+```
+
+Edit `/etc/nginx/nginx.conf` and uncomment
+```
+server_names_hash_bucket_size 64;
 ```
 
 start and enable nginx.
