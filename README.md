@@ -147,3 +147,26 @@ Sending registration request...
 Success.
 ```
 
+Ensure the matrix server starts on server reboot by adding a script to the crontab
+```
+cd ~/synapse
+vi matrix_startup_script.sh
+```
+
+Paste the following in
+```
+#!/bin/bash
+cd ~/synapse
+source env/bin/activate
+synctl start
+```
+
+Edit the crontab
+```
+crontab -e
+```
+
+Paste the following at the bottom
+```
+@reboot /root/synapse/start_on_boot.sh
+```
