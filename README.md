@@ -170,3 +170,28 @@ Paste the following at the bottom
 ```
 @reboot /root/synapse/start_on_boot.sh
 ```
+
+# Other config
+Increase the body size in nginx config by adding the following to `/etc/nginx/nginx.conf`:
+```
+client_max_body_size 25M;
+```
+
+Set identity server in `/root/synapse/homeserver.yaml`
+```
+default_identity_server: https://matrix.landau-williams.co.uk
+```
+
+Enable `search_all_users: true` in `/root/synapse/homeserver.yaml`
+```
+user_directory:
+#  enabled: true
+  search_all_users: true
+```
+
+Restart synapse
+```
+cd ~/synapse
+source env/bin/activate
+synctl start
+```
