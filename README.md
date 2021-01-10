@@ -179,7 +179,7 @@ client_max_body_size 25M;
 
 Set identity server in `/root/synapse/homeserver.yaml`
 ```
-default_identity_server: https://matrix.landau-williams.co.uk
+default_identity_server: https://matrix.example.co.uk
 ```
 
 Enable `search_all_users: true` in `/root/synapse/homeserver.yaml`
