@@ -53,14 +53,9 @@ sudo apt-get install nginx
 ```
 
 Create cert using LetsEncrypt
- ```
-cd && wget https://dl.eff.org/certbot-auto
-chmod a+x certbot-auto
-cd && ./certbot-auto certonly --nginx -d matrix.example.com
-cd && ./certbot-auto renew --dry-run
-crontab -e
-0 0 * * * cd && ./certbot-auto renew --quiet --no-self-upgrade
-0 12 * * * cd && ./certbot-auto renew --quiet --no-self-upgrade
+https://certbot.eff.org/lets-encrypt/pip-nginx
+```
+certbot certonly --nginx -d matrix.example.com
 ```
 
 Matrix recommends setting up a reverse proxy, such as nginx, Apache or HAProxy, in front of your Synapse server. This is intended to simplify client connections by allowing Matrix to use the common HTTPS port 443 while keeping the server-to-server connections at the port 8448.
