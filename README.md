@@ -24,6 +24,11 @@ pip install --upgrade setuptools
 pip install matrix-synapse
 ```
 
+Running on a pi I needed to install the two following packages
+```
+apt-get install libopenjp2-7 libtiff5 
+```
+
 Before Synapse can be started, you will need to generate a configuration file that defines the server settings.
 
 Run the following commands in your Synapse virtual environment. Replace the server name matrix.example.com with your own domain, but note that the name cannot be changed later without reinstalling the home server. Also, choose whether you wish to allow Synapse to report statistics by entering either --report-stats=yes or no.
